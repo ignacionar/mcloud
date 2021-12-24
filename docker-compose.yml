@@ -15,20 +15,6 @@ services:
     depends_on:
       - stf-app
     restart: always
-  mcloud-grid:
-    image: "zebrunner/mcloud-grid:${TAG_SELENIUM_HUB}"
-    container_name: mcloud-grid
-    env_file:
-     - variables.env
-    environment:
-#     4min session wait timeout as 5 min is configured on NGiNX
-     - GRID_NEW_SESSION_WAIT_TIMEOUT=240000
-     - GRID_TIMEOUT=60000
-     - GRID_BROWSER_TIMEOUT=60000
-#     - JAVA_OPTS=-Dselenium.LOGGER.level=FINEST
-    ports:
-     - "4446:4444"
-    restart: always
   rethinkdb:
     image: "rethinkdb:${TAG_RETHINKDB}"
     container_name: rethinkdb
